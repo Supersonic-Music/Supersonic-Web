@@ -1,0 +1,18 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+---
+<div>
+	<Sidebar/>
+	<main>
+		<slot></slot>
+	</main>
+</div>
+
+<style>
+	body {
+		background-color: #212121;
+		color: white;
+		font-family: sans-serif;
+		font-weight: bold;
+	}
+</style>

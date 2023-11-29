@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArtistView from '../components/ArtistsView.astro';
+import fetch from 'node-fetch';
+
+const response = await fetch('http://localhost:6969/music/.cal/meta/artists.json');
+const data = await response.json();
+console.log(data); // Add this line to inspect the data
+let items = data.filter(item => !item.name.startsWith('.'));
+---
+
+<Layout>
+    <ArtistView>
+        <h1>Artists</h1>
+        <ul class="button-block">
+            {items.map((item, index) => (
+                <li><button class={`listbutton ${index === 0 ? 'first' : ''} ${index === items.length - 1 ? 'last' : ''}`}>{item.name}</button></li>
+            ))}
+        </ul>
+    </ArtistView>
+</Layout>
+
+<style>
+	.button-block {
+		border: 1px solid rgba(var(--accent-light), 25%);
+		overflow: hidden;
+		padding: 10px;
+	}
+	.listbutton.first {
+		border-top-left-radius: 25px;
+		border-top-right-radius: 25px;
+	}
+	.listbutton.last {
+		border-bottom-left-radius: 25px;
+		border-bottom-right-radius: 25px;
+	}
+	.listbutton {
+		background-color: #292929;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: block;
+		width: 100%;
+		font-size: 1.3rem;
+		font-weight: bold;
+		text-align: left;
+		transition: all 0.3s ease-in-out;
+		margin: 0.3rem;
+	}
+	.listbutton:hover {
+		background-color: #3d3d3d;
+	}
+	.hidden {
+  		display: none;
+	}
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	.astro-a {
+		position: absolute;
+		top: -32px;
+		left: 50%;
+		transform: translatex(-50%);
+		width: 220px;
+		height: auto;
+		z-index: -1;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		margin-bottom: 2rem;
+		border: 1px solid rgba(var(--accent-light), 25%);
+		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
+		padding: 1.5rem;
+		border-radius: 8px;
+	}
+	.instructions code {
+		font-size: 0.8em;
+		font-weight: bold;
+		background: rgba(var(--accent-light), 12%);
+		color: rgb(var(--accent-light));
+		border-radius: 4px;
+		padding: 0.3em 0.4em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent-light));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 2rem;
+		padding: 0;
+	}
+</style>
