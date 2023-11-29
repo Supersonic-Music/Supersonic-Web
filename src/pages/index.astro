@@ -4,16 +4,16 @@ import ArtistView from '../components/ArtistsView.astro';
 import fetch from 'node-fetch';
 
 const response = await fetch('http://localhost:6969/music/.cal/meta/artists.json');
-const data = await response.json();
-console.log(data); // Add this line to inspect the data
-let items = data.filter(item => !item.name.startsWith('.'));
+const data: any = await response.json();
+console.log(data);
+let items = data.filter((item: any) => !item.name.startsWith('.'));
 ---
 
 <Layout>
     <ArtistView>
         <h1>Artists</h1>
         <ul class="button-block">
-            {items.map((item, index) => (
+            {items.map((item: any, index: number) => (
                 <li><button class={`listbutton ${index === 0 ? 'first' : ''} ${index === items.length - 1 ? 'last' : ''}`}>{item.name}</button></li>
             ))}
         </ul>
