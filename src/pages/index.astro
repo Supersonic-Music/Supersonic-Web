@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ArtistView from '../components/ArtistsView.astro';
 import fetch from 'node-fetch';
 
-const response = await fetch('http://localhost:6969/music/.cal/meta/artists.json');
+const response = await fetch('https://supersonic.software/music/.cal/meta/artists.json');
 const data: any = await response.json();
 console.log(data);
 let items = data.filter((item: any) => !item.name.startsWith('.'));
