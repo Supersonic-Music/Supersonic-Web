@@ -7,9 +7,10 @@ const response = await fetch('https://supersonic.software/music/.cal/meta/artist
 const data: any = await response.json();
 console.log(data);
 let items = data.filter((item: any) => !item.name.startsWith('.'));
+items = items.map((item: any) => item.name.endsWith('.sonic') ? { ...item, name: item.name.slice(0, -6) } : item);
 ---
 
-<Layout>
+<Layout title="Supersonic Music">
     <ArtistView>
         <h1>Artists</h1>
         <ul class="button-block">
