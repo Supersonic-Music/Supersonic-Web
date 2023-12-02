@@ -1,20 +1,25 @@
 {
-  "name": "",
+  "name": "supersonic-web",
+  "version": "0.1",
+  "private": true,
   "type": "module",
-  "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public -p 4321 --no-clear"
+  },
+  "devDependencies": {
+    "@iconify/svelte": "^3.1.4",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "rollup": "^3.15.0",
+    "rollup-plugin-css-only": "^4.3.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.1.2",
+    "svelte": "^3.55.0"
   },
   "dependencies": {
-    "@astrojs/check": "^0.3.1",
-    "astro": "^3.6.0",
-    "astro-icon": "^0.8.1",
-    "astro-navbar": "^2.3.0",
-    "tailwind": "^4.0.0",
-    "typescript": "^5.3.2"
+    "sirv-cli": "^2.0.0"
   }
 }

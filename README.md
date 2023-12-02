@@ -1,4 +1,2 @@
 # Supersonic Web
-Simple Web client for Supersonic.
-
-Alternative to Clown Tunes. WIP
+Web client for [Supersonic](https://github.com/Supersonic-Music/Supersonic-Server) made with Svelte.
